@@ -3,7 +3,7 @@ import { useComments } from './useComments';
 import { useEffect } from 'react';
 
 export const TestComponent = () => {
-
+    console.log(process.env)
     const { fetchComments } = useComments();
 
     useEffect(() => {
