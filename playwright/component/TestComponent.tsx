@@ -1,10 +1,12 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { useComments } from './useComments';
 import { useEffect } from 'react';
+import useAnalyticsEventTracker from '../../src/useAnalyticsEventTracker';
 
 export const TestComponent = () => {
-    console.log(process.env)
     const { fetchComments } = useComments();
+    const gaEventTracker = useAnalyticsEventTracker();
 
     useEffect(() => {
         fetchComments()
@@ -15,6 +17,10 @@ export const TestComponent = () => {
             <p>Component API Call Test</p>
             <div>
                 <button onClick={() => fetchTodos()}>Component API Call Test</button>
+                <br />
+                <br />
+                <br />
+                <a href="#" onClick={() => gaEventTracker('call')}>Call Us</a>
             </div>
         </>
     )

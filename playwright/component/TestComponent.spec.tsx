@@ -7,18 +7,17 @@ test.beforeAll(async () => {
 });
 
 test.only('should work', async ({ mount, page }) => {
-    await page.pause()
-    console.log(process.env)
-    const component = await mount(<TestComponent />);
-    await page.pause()
+  await page.pause()
+  const component = await mount(<TestComponent />);
+  await page.pause()
 
-    page.route('**', (route) => {
-        console.log(route.request())
-        route.continue()
-    })
-
+  page.route('**', (route) => {
+    console.log(route.request())
+    route.continue()
+  })
 
 
-    await page.pause()
-    await expect(component).toContainText('Learn React');
+
+  await page.pause()
+  await expect(component).toContainText('Learn React');
 });
